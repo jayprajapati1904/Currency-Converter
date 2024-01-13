@@ -28,9 +28,11 @@ for (let select of dropdowns) {
 const updateExchangeRate = async () => {
   let amount = document.querySelector(".amount input");
   let amtVal = amount.value;
-  if (amtVal === "" || amtVal < 1) {
+  if (amtVal === ""  || Number(amtVal) < 1) {
+    alert('Please, enter a valid value');
     amtVal = 1;
     amount.value = "1";
+   
   }
   const URL = `${BASE_URL}/${fromCurr.value.toLowerCase()}/${toCurr.value.toLowerCase()}.json`;
   let response = await fetch(URL);
